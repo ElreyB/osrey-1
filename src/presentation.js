@@ -3,91 +3,80 @@ import React from 'react';
 
 // Import Spectacle Core tags
 import {
-  BlockQuote,
-  Cite,
   Deck,
   Heading,
-  ListItem,
+  Image,
+  Link,
   List,
-  Quote,
   Slide,
   Text,
+  ListItem
 } from 'spectacle';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
+import osrey1 from './images/osrey1.jpg';
+import oscarOsrey from './images/oscar-osrey.jpg';
+import elreyOsrey from './images/elrey-osrey.jpg';
 
 // Require CSS
 require('normalize.css');
 
-const theme = createTheme(
-  {
-    primary: 'white',
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
-    quartenary: '#CECECE',
-  },
-  {
-    primary: 'Montserrat',
-    secondary: 'Helvetica',
-  }
-);
+// const theme = createTheme(
+//   {
+//     primary: 'white',
+//     secondary: '#1F2022',
+//     tertiary: '#03A9FC',
+//     quartenary: '#CECECE'
+//   },
+//   {
+//     primary: 'Montserrat',
+//     secondary: 'Helvetica'
+//   }
+// );
 
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck
-        transition={['zoom', 'slide']}
-        transitionDuration={500}
-        theme={theme}
-      >
-        <Slide transition={['zoom']} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
-          </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
-          </Text>
+      <Deck>
+        <Slide>
+          <Heading size={2}>Hello, My name is Osrey</Heading>
+          <Image alt={'Osrey'} src={osrey1} height={300} width={300} />
+          <Text>Let me tell you a little about myself.......</Text>
         </Slide>
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Typography
-          </Heading>
-          <Heading size={1} textColor="secondary">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="secondary">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="secondary">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="secondary">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="secondary">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="secondary">
-            Standard text
-          </Text>
-        </Slide>
-        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Standard List
-          </Heading>
+        <Slide>
+          <Text>This is one of my pet Oscar</Text>
+          <Image
+            alt={'Oscar and me'}
+            src={oscarOsrey}
+            width={402.58}
+            height={299}
+          />
+          <Text>He likes to....</Text>
           <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
+            <ListItem>eat toast with a tomatoe spread</ListItem>
+            <ListItem>
+              tappping on keyboards while looking at a screen.(don't know why)
+            </ListItem>
+            <ListItem>and hangout with my other pet Elrey</ListItem>
           </List>
         </Slide>
-        <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
+        <Slide>
+          <Text>This is Elrey aka Personal Butler</Text>
+          <Image
+            alt={'Elrey and me'}
+            src={elreyOsrey}
+            width={300}
+            height={300}
+          />
+          <Text>
+            He is the best. We play together, he feeds, cleans up after me, and
+            he is so{' '}
+            <Link href={'http://elrey.dance/'} target={'_blank'}>
+              talented.
+            </Link>
+            (I taught him everything)
+          </Text>
         </Slide>
       </Deck>
     );
