@@ -8,9 +8,11 @@ import {
   Image,
   Link,
   List,
+  Notes,
   Slide,
   Text,
-  ListItem
+  ListItem,
+  Markdown
 } from 'spectacle';
 
 // Import theme
@@ -18,6 +20,7 @@ import createTheme from 'spectacle/lib/themes/default';
 import osrey1 from './images/osrey1.jpg';
 import oscarOsrey from './images/oscar-osrey.jpg';
 import elreyOsrey from './images/elrey-osrey.jpg';
+import slidesMarkdown from 'raw-loader!markdown.md';
 
 // Require CSS
 require('normalize.css');
@@ -39,6 +42,10 @@ const theme = createTheme(
   }
 );
 
+// const slideTwoNotes =
+//   <p>talk about how <em><Oscar/em> and <em>Osrey</em> got close over time</p>
+// };
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -53,14 +60,19 @@ export default class Presentation extends React.Component {
         // autoplay={true}
         // autoplayDuration={1000}
       >
-        <Slide colorControl={'blue'}>
+        <Slide controlColor={'blue'}>
           <Heading size={2} textFont="primary">
             Hello, My name is Osrey
           </Heading>
           <Image alt={'Osrey'} src={osrey1} height={300} width={300} />
           <Text>Let me tell you a little about myself.......</Text>
         </Slide>
-        <Slide>
+
+        <Slide
+          maxHeight={200}
+          maxWidth={400}
+          notes="<p>talk about how <em>Oscar<em> and <em>Osrey</em> got close over time</p>"
+        >
           <Text>This is one of my pet Oscar</Text>
           <Image
             alt={'Oscar and me'}
@@ -77,7 +89,18 @@ export default class Presentation extends React.Component {
             <ListItem>and hangout with my other pet Elrey</ListItem>
           </List>
         </Slide>
-        <Slide>
+
+        <Slide
+          progressColor="yellow"
+          // transition={['fade', 'zoom']}
+          transitionIn={['spin']}
+          transitionOut={['zoom']}
+          transitionDuration={3000}
+        >
+          <Notes>
+            <h3>somthing</h3>
+            <h5>other stuff</h5>
+          </Notes>
           <Text>This is Elrey aka Personal Butler</Text>
           <Image
             alt={'Elrey and me'}
@@ -94,6 +117,13 @@ export default class Presentation extends React.Component {
             (I taught him everything)
           </Text>
         </Slide>
+        {/* {MarkdownSlides`
+        ## Markdown slide
+        stuff stuff and more stuff
+        ---
+        # No more stuff
+        `} */}
+        {/* {MarkdownSlides(slidesMarkdown)} */}
       </Deck>
     );
   }
