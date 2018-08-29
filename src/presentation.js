@@ -22,25 +22,41 @@ import elreyOsrey from './images/elrey-osrey.jpg';
 // Require CSS
 require('normalize.css');
 
-// const theme = createTheme(
-//   {
-//     primary: 'white',
-//     secondary: '#1F2022',
-//     tertiary: '#03A9FC',
-//     quartenary: '#CECECE'
-//   },
-//   {
-//     primary: 'Montserrat',
-//     secondary: 'Helvetica'
-//   }
-// );
+const theme = createTheme(
+  {
+    primary: 'red',
+    secondary: '#1DDBE7'
+  },
+  {
+    primary: {
+      name: 'Cabin Sketch',
+      googleFont: true
+    },
+    secondary: 'Helvetica'
+  },
+  {
+    quaternary: 'blue'
+  }
+);
 
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck>
-        <Slide>
-          <Heading size={2}>Hello, My name is Osrey</Heading>
+      <Deck
+        // controls={false}
+        theme={theme}
+        contentHeight={500}
+        contentWidth={800}
+        progress={'number'}
+        transition={['slide', 'zoom', 'fade', 'spin']}
+        transitionDuration={1000}
+        // autoplay={true}
+        // autoplayDuration={1000}
+      >
+        <Slide colorControl={'blue'}>
+          <Heading size={2} textFont="primary">
+            Hello, My name is Osrey
+          </Heading>
           <Image alt={'Osrey'} src={osrey1} height={300} width={300} />
           <Text>Let me tell you a little about myself.......</Text>
         </Slide>
