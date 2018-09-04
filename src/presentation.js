@@ -3,16 +3,24 @@ import React from 'react';
 
 // Import Spectacle Core tags
 import {
+  BlockQuote,
+  Cite,
+  CodePane,
+  ComponentPlayground,
   Deck,
+  Fill,
+  GoToAction,
   Heading,
   Image,
+  Layout,
   Link,
   List,
   Notes,
+  Quote,
   Slide,
   Text,
   ListItem,
-  Markdown
+  MarkdownSlides
 } from 'spectacle';
 
 // Import theme
@@ -20,7 +28,7 @@ import createTheme from 'spectacle/lib/themes/default';
 import osrey1 from './images/osrey1.jpg';
 import oscarOsrey from './images/oscar-osrey.jpg';
 import elreyOsrey from './images/elrey-osrey.jpg';
-import slidesMarkdown from 'raw-loader!markdown.md';
+// import slidesMarkdown from 'raw-loader!markdown.md';
 
 // Require CSS
 require('normalize.css');
@@ -36,15 +44,25 @@ const theme = createTheme(
       googleFont: true
     },
     secondary: 'Helvetica'
-  },
-  {
-    quaternary: 'blue'
   }
+  // {
+  //   quaternary: 'blue'
+  // }
 );
 
-// const slideTwoNotes =
-//   <p>talk about how <em><Oscar/em> and <em>Osrey</em> got close over time</p>
-// };
+const javascript = `const helloWorld = () => 'Hello World';
+console.log(helloWorld());`;
+
+const code = `class View extends React.Component {
+  componentDidMount() {
+    console.log('Hello');
+  }
+
+  render() {
+    return <div>My View</div>;
+  }
+}
+render(<View />);`;
 
 export default class Presentation extends React.Component {
   render() {
@@ -52,8 +70,8 @@ export default class Presentation extends React.Component {
       <Deck
         // controls={false}
         theme={theme}
-        contentHeight={500}
-        contentWidth={800}
+        // contentHeight={500}
+        // contentWidth={800}
         progress={'number'}
         transition={['slide', 'zoom', 'fade', 'spin']}
         transitionDuration={1000}
@@ -69,22 +87,30 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide
-          maxHeight={200}
-          maxWidth={400}
+          // maxHeight={200}
+          // maxWidth={400}
           notes="<p>talk about how <em>Oscar<em> and <em>Osrey</em> got close over time</p>"
         >
-          <Text>This is one of my pet Oscar</Text>
-          <Image
-            alt={'Oscar and me'}
-            src={oscarOsrey}
-            width={402.58}
-            height={299}
-          />
+          <Layout>
+            <Fill>
+              <Text>This is one of my pet Oscar</Text>
+            </Fill>
+            <Fill>
+              <Image
+                alt={'Oscar and me'}
+                src={oscarOsrey}
+                width={402.58}
+                height={299}
+              />
+            </Fill>
+          </Layout>
           <Text>He likes to....</Text>
           <List>
             <ListItem>eat toast with a tomatoe spread</ListItem>
             <ListItem>
-              tappping on keyboards while looking at a screen.(don't know why)
+              tappping on <code style={{ color: 'black' }}>keyboards </code>
+              while looking at a screen. Always typing crazy stuff like...
+              <CodePane lang="javascript" source={javascript} theme="light" />
             </ListItem>
             <ListItem>and hangout with my other pet Elrey</ListItem>
           </List>
@@ -114,16 +140,25 @@ export default class Presentation extends React.Component {
             <Link href={'http://elrey.dance/'} target={'_blank'}>
               talented.
             </Link>
-            (I taught him everything)
           </Text>
+          <BlockQuote>
+            <Quote>I taught him everything</Quote>
+            <Cite>Osrey, The Bear King</Cite>
+          </BlockQuote>
         </Slide>
-        {/* {MarkdownSlides`
+        <Slide>
+          {MarkdownSlides`
         ## Markdown slide
         stuff stuff and more stuff
         ---
         # No more stuff
-        `} */}
-        {/* {MarkdownSlides(slidesMarkdown)} */}
+        `}
+          {/* {MarkdownSlides(slidesMarkdown)} */}
+        </Slide>
+        <Slide>
+          <GoToAction slide={2} />
+          <ComponentPlayground code={code} />
+        </Slide>
       </Deck>
     );
   }
