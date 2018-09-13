@@ -26,7 +26,7 @@ import {
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 import osrey1 from './images/osrey1.jpg';
-import oscarOsrey from './images/oscar-osrey.jpg';
+import oscarOsrey from './oscar-osrey.jpg';
 import elreyOsrey from './images/elrey-osrey.jpg';
 // import slidesMarkdown from 'raw-loader!markdown.md';
 
@@ -63,6 +63,7 @@ const code = `class View extends React.Component {
   }
 }
 render(<View />);`;
+const repeat = 'repeat';
 
 export default class Presentation extends React.Component {
   render() {
@@ -78,7 +79,7 @@ export default class Presentation extends React.Component {
         // autoplay={true}
         // autoplayDuration={1000}
       >
-        <Slide controlColor={'blue'}>
+        <Slide bgImage={oscarOsrey} bgDarken={0.5} bgPositoin="bottom right">
           <Heading size={2} textFont="primary">
             Hello, My name is Osrey
           </Heading>
